@@ -63,8 +63,8 @@
   </repositories>
 
   <scm>
-    <connection>scm:git:git://github.com/nuxeo/nuxeo-timeoff.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com:nuxeo/nuxeo-timeoff.git</developerConnection>
-    <url>https://github.com/nuxeo/nuxeo-timeoff</url>
+    <connection>scm:git:git://github.com/nuxeo-sandbox/nuxeo-polymer-template.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:nuxeo-sandbox/nuxeo-polymer-template.git</developerConnection>
+    <url>https://github.com/nuxeo-sandbox/nuxeo-polymer-template</url>
   </scm>
 </project>
