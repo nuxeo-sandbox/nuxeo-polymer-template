@@ -1,0 +1,85 @@
+<!--
+@license
+(C) Copyright 2015 Nuxeo SA (http://nuxeo.com/) and contributors.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the GNU Lesser General Public License
+(LGPL) version 2.1 which accompanies this distribution, and is available at
+http://www.gnu.org/licenses/lgpl.html
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.
+@Contributors:
+Fred Vadon <fvadon@nuxeo.com>
+
+This is the main app.
+Example: <nuxeo-app></nuxeo-app>
+@group Nuxeo Elements
+@element nuxeo-article-app
+@demo app/index.html
+-->
+
+<dom-module id="nuxeo-app">
+  <template>
+  <style is="custom-style">
+
+  </style>
+
+  <div class="top">
+    <div class="app-name"> Nuxeo Polymer Template</div>
+  </div>
+    <div class="bottom">
+      <paper-tabs class="headerMenu" selected="{{page}}" attr-for-selected="name" >
+        <paper-tab name="home">Home</paper-tab>
+        <paper-tab name="tab">Tab</paper-tab>
+      </paper-tabs>
+    </div>
+
+    <!-- Main Content -->
+    <div>
+      <iron-pages selected="[[page]]" attr-for-selected="name">
+        <div name="home">
+          Home Page
+        </div>
+        <div name="tab">
+          TAB Page
+        </div>
+      </iron-pages>
+    </div>
+
+  <paper-toast id="toast">
+    <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()"></span>
+  </paper-toast>
+
+  </template>
+  <script>
+  Polymer({
+    is: 'nuxeo-app',
+    // Expose properties
+    properties: {
+      baseUrl: {
+        type: String,
+        value: '/'
+      },
+      page: {
+        type: String,
+        notify: true,
+        observer: '_navigate'
+      }
+    },
+
+    scrollPageToTop: function() {
+      //this.$.selectedPage.scrollToTop(true);
+    },
+    ready: function() {
+      //When component is ready.
+    },
+    _navigate: function() {
+      // see nuxeo web ui app for info
+      var url = '/' + this.page;
+      page(url);
+      this.fire('navigation', {page: this.page});
+    }
+  });
+  </script>
+</dom-module>
