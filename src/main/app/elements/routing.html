@@ -22,8 +22,6 @@
 window.addEventListener('WebComponentsReady', function() {
 
   var app = document.querySelector('nuxeo-app');
-  console.log('-- routing');
-  console.log(app);
   // We use Page.js for routing. This is a Micro
   // client-side router inspired by the Express router
   // More info: https://visionmedia.github.io/page.js/
@@ -50,27 +48,22 @@ window.addEventListener('WebComponentsReady', function() {
   });
 
   page('/', function() {
-    console.log('routing /');
     app.page = 'home';
     page.redirect('/home');
   });
   page(app.baseUrl, function() {
-    console.log('routing baseUrl');
     app.page = 'home';
     page.redirect('/home');
   });
   page('/home', function() {
-    console.log('routing home');
     app.page = 'home';
   });
   page('/tab', function() {
-    console.log('routing tab');
     app.page = 'tab';
   });
 
   // 404
   page('*', function() {
-    console.log('routing 404');
     app.$.toast.text = 'Can\'t find: ' + window.location.href + '. Redirected you to Home Page';
     app.$.toast.show();
     //page.redirect(app.baseUrl);

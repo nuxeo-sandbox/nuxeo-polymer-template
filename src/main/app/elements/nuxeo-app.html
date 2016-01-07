@@ -28,58 +28,67 @@ Example: <nuxeo-app></nuxeo-app>
   <div class="top">
     <div class="app-name"> Nuxeo Polymer Template</div>
   </div>
-    <div class="bottom">
-      <paper-tabs class="headerMenu" selected="{{page}}" attr-for-selected="name" >
-        <paper-tab name="home">Home</paper-tab>
-        <paper-tab name="tab">Tab</paper-tab>
-      </paper-tabs>
-    </div>
+  <div class="bottom">
+    <paper-tabs class="headerMenu" selected="{{page}}" attr-for-selected="name" >
+      <paper-tab name="home">Home</paper-tab>
+      <paper-tab name="tab">Tab</paper-tab>
+    </paper-tabs>
+  </div>
 
-    <!-- Main Content -->
-    <div>
-      <iron-pages selected="[[page]]" attr-for-selected="name">
-        <div name="home">
-          Home Page
-        </div>
-        <div name="tab">
-          TAB Page
-        </div>
-      </iron-pages>
-    </div>
+  <!-- Main Content -->
+  <div>
+    <iron-pages selected="[[page]]" attr-for-selected="name">
+      <div name="home">
+        <nuxeo-resource auto path="/user/search" params='{"q": "*"}' response="{{users}}"></nuxeo-resource>
+        <paper-material elevation="1">
+          <h2 class="page-title">Users</h2>
+          <ul>
+            <!-- loop over users.entries and print each user's id -->
+            <template is="dom-repeat" items="{{users.entries}}" as="user">
+              <li>[[user.id]]</li>
+            </template>
+          </ul>
+        </paper-material>
+      </div>
+      <div name="tab">
+        TAB Page
+      </div>
+    </iron-pages>
+  </div>
 
   <paper-toast id="toast">
     <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()"></span>
   </paper-toast>
 
-  </template>
-  <script>
-  Polymer({
-    is: 'nuxeo-app',
-    // Expose properties
-    properties: {
-      baseUrl: {
-        type: String,
-        value: '/'
-      },
-      page: {
-        type: String,
-        notify: true,
-        observer: '_navigate'
-      }
+</template>
+<script>
+Polymer({
+  is: 'nuxeo-app',
+  // Expose properties
+  properties: {
+    baseUrl: {
+      type: String,
+      value: '/'
     },
-
-    scrollPageToTop: function() {
-      //this.$.selectedPage.scrollToTop(true);
-    },
-    ready: function() {
-      //When component is ready.
-    },
-    _navigate: function() {
-      // see nuxeo web ui app for info
-      var url = '/' + this.page;
-      page(url);
-      this.fire('navigation', {page: this.page});
+    page: {
+      type: String,
+      notify: true,
+      observer: '_navigate'
     }
-  });
-  </script>
+  },
+
+  scrollPageToTop: function() {
+    //this.$.selectedPage.scrollToTop(true);
+  },
+  ready: function() {
+    //When component is ready.
+  },
+  _navigate: function() {
+    // see nuxeo web ui app for info
+    var url = '/' + this.page;
+    page(url);
+    this.fire('navigation', {page: this.page});
+  }
+});
+</script>
 </dom-module>
