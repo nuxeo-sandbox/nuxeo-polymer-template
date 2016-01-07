@@ -19,7 +19,6 @@ To use this template, there are several places where the names should be adapted
 - scr/main/ressources/META-INF/MANIFEST.MF: bundle name.
 - scr/main/ressources/OSGI-INF/auth-config.xml: url pattern for the app deployed in Nuxeo.
 - scr/main/ressources/OSGI-INF/deployment-fragment.xml: url pattern again.
-- GULP FILE :DIST VAR
 
 
 # Building
