@@ -16,9 +16,9 @@ To use this template, there are several places where the names should be adapted
 - gulpfile.js: update DIST var (l50).
 - src/main/app/: this is where your app goes. So you should probably start with manifest.json. And then index.html. Routing.html is here to manage sup url within your app.
 - src/main/java: if you have java code to deploy on the server.
-- scr/main/ressources/META-INF/MANIFEST.MF: bundle name.
-- scr/main/ressources/OSGI-INF/auth-config.xml: url pattern for the app deployed in Nuxeo.
-- scr/main/ressources/OSGI-INF/deployment-fragment.xml: url pattern again.
+- scr/main/resources/META-INF/MANIFEST.MF: bundle name.
+- scr/main/resources/OSGI-INF/auth-config.xml: url pattern for the app deployed in Nuxeo.
+- scr/main/resources/OSGI-INF/deployment-fragment.xml: url pattern again.
 
 
 # Building
